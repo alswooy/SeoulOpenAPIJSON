@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2 align="center">개의 WIFI 정보를 정상적으로 저장하였습니다.</h2>
-<a class="home" href="">홈으로 가기</a>
+<a class="home" href="index.jsp">홈으로 가기</a>
 </body>
 </html>

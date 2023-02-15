@@ -3,20 +3,34 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+
 	<meta charset="UTF-8">
 	<title>와이파이 정보 구하기</title>
+	<style>
+	  table, th, td {
+	    border: 1px solid #bcbcbc;
+	    text-align: center;
+	    
+	  }
+	  table {
+	    width: 100%;
+	    
+	  }
+	</style>
 </head>
 <body>
 
 	<h1>와이파이 정보 구하기</h1>
 	<div class="link-all">
-		<a class="link-a" href="">홈</a>|
-		<a class="link-a" href="">위치 히스토리 목록</a>|
-		<a class="link-a" href="">Open API 와이파이 정보 가져오기</a>
+		<a class="link-a" href="index.jsp">홈</a>|
+		<a class="link-a" href="history.jsp">위치 히스토리 목록</a>|
+		<a class="link-a" href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a>|
+		<a class="link-a" href="">북마크 보기</a>|
+		<a class="link-a" href="">북마크 그룹 관리</a>
 	</div>
 	<br>
 	<form method="get" action="/load.jsp">
-        LAT : <input type="text" id="location_lat" name="lat" value/>
+        LAT : <input type="text" id="location_lat" name="lat" value/>,
         LNT : <input type="text" id="location_lnt" name="lnt" value/>
         <input type="button", value="내 위치 가져오기" onclick="on()"/>
         <input type="submit", value="근처 Wi-Fi 정보 보기"/>

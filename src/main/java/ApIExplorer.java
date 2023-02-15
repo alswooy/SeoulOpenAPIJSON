@@ -10,28 +10,28 @@ public class ApIExplorer {
 	public static void main(String[] args) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088/7354734f416a6a613936514e477a6d/xml/TbPublicWifiInfo/1/5/"); 
 		/*URL*/
-		urlBuilder.append("/" + URLEncoder.encode("sample","UTF-8") ); /*ÀÎÁõÅ°
-		(sample»ç¿ë½Ã¿¡´Â È£Ãâ½Ã Á¦ÇÑµË´Ï´Ù.)*/
-		urlBuilder.append("/" + URLEncoder.encode("xml","UTF-8") ); /*¿äÃ»ÆÄÀÏÅ¸ÀÔ
+		urlBuilder.append("/" + URLEncoder.encode("sample","UTF-8") ); /*ï¿½ï¿½ï¿½ï¿½Å°
+		(sampleï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÑµË´Ï´ï¿½.)*/
+		urlBuilder.append("/" + URLEncoder.encode("xml","UTF-8") ); /*ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½
 		(xml,xmlf,xls,json) */
 		urlBuilder.append("/" + URLEncoder.encode("CardSubwayStatsNew","UTF-8")); 
-		/*¼­ºñ½º¸í (´ë¼Ò¹®ÀÚ ±¸ºÐ ÇÊ¼öÀÔ´Ï´Ù.)*/
-		urlBuilder.append("/" + URLEncoder.encode("1","UTF-8")); /*¿äÃ»½ÃÀÛÀ§Ä¡
-		(sampleÀÎÁõÅ° »ç¿ë½Ã 5ÀÌ³» ¼ýÀÚ)*/
+		/*ï¿½ï¿½ï¿½ñ½º¸ï¿½ (ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½Ô´Ï´ï¿½.)*/
+		urlBuilder.append("/" + URLEncoder.encode("1","UTF-8")); /*ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡
+		(sampleï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ 5ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½)*/
 		urlBuilder.append("/" + URLEncoder.encode("5","UTF-8")); 
-		/*¿äÃ»Á¾·áÀ§Ä¡(sampleÀÎÁõÅ° »ç¿ë½Ã 5ÀÌ»ó ¼ýÀÚ ¼±ÅÃ ¾È µÊ)*/
-		// »óÀ§ 5°³´Â ÇÊ¼öÀûÀ¸·Î ¼ø¼­¹Ù²ÙÁö ¾Ê°í È£ÃâÇØ¾ß ÇÕ´Ï´Ù.
-		// ¼­ºñ½ºº° Ãß°¡ ¿äÃ» ÀÎÀÚÀÌ¸ç ÀÚ¼¼ÇÑ ³»¿ëÀº °¢ ¼­ºñ½ºº° '¿äÃ»ÀÎÀÚ'ºÎºÐ¿¡
-		urlBuilder.append("/" + URLEncoder.encode("20220301","UTF-8")); /* ¼­ºñ½ºº°
-		Ãß°¡ ¿äÃ»ÀÎÀÚµé*/
+		/*ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡(sampleï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ 5ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½)*/
+		// ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù²ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ È£ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Õ´Ï´ï¿½.
+		// ï¿½ï¿½ï¿½ñ½ººï¿½ ï¿½ß°ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ñ½ººï¿½ 'ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½'ï¿½ÎºÐ¿ï¿½
+		urlBuilder.append("/" + URLEncoder.encode("20220301","UTF-8")); /* ï¿½ï¿½ï¿½ñ½ººï¿½
+		ï¿½ß°ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Úµï¿½*/
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/xml");
-		System.out.println("Response code: " + conn.getResponseCode()); /* ¿¬°á
-		ÀÚÃ¼¿¡ ´ëÇÑ È®ÀÎÀÌ ÇÊ¿äÇÏ¹Ç·Î Ãß°¡ÇÕ´Ï´Ù.*/
+		System.out.println("Response code: " + conn.getResponseCode()); /* ï¿½ï¿½ï¿½ï¿½
+		ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ï¹Ç·ï¿½ ï¿½ß°ï¿½ï¿½Õ´Ï´ï¿½.*/
 		BufferedReader rd;
-		// ¼­ºñ½ºÄÚµå°¡ Á¤»óÀÌ¸é 200~300»çÀÌÀÇ ¼ýÀÚ°¡ ³ª¿É´Ï´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Úµå°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ 200~300ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½É´Ï´ï¿½.
 		if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 		rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} else {
@@ -45,6 +45,7 @@ public class ApIExplorer {
 		rd.close();
 		conn.disconnect();
 		System.out.println(sb.toString());
+		
 	}
 
 }
