@@ -5,18 +5,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import okhttp3.MediaType;
+
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+
+
 
 public class ApIExplorer {
 
@@ -44,7 +44,7 @@ public class ApIExplorer {
 
         // 4. 요청하고자 하는 URL과 통신하기 위한 Connection 객체 생성.
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-
+        OkHttpClient client = new OkHttpClient();
 
         // 5. 통신을 위한 메소드 SET (Get 요청)
         conn.setRequestMethod("GET");
@@ -72,8 +72,9 @@ public class ApIExplorer {
 
         // 문자열로 바꾸기
         String result = sb.toString();
-        System.out.println("전체 response = " + result);
-
+        
+        
+        
         // 10. 객체 해제
         rd.close();
         conn.disconnect();
@@ -90,135 +91,93 @@ public class ApIExplorer {
             System.out.println(responseResult);
             System.out.println(bodyResult);
             
-            System.out.println(bodyResult.size());
+            System.out.println(bodyResult.size()); //개수
             if (bodyResult.size() > 0){
                 for(int i=0; i<bodyResult.size(); i++){
                     JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+                    
+                    apidto api= new apidto();
+                    List<apidto> dtos = new ArrayList<apidto>();
+                    
+                    
                     String MGR_NO=(String)jsonObj.get("X_SWIFI_MGR_NO");
-                    System.out.println("관리번호 : "+MGR_NO); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("관리번호 : "+MGR_NO);
+                    api.setMGR_NO(MGR_NO);
+                    
+                    
                     String WRDOFC=(String)jsonObj.get("X_SWIFI_WRDOFC");
-                    System.out.println("자치구 : "+WRDOFC); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("자치구 : "+WRDOFC);
+                    api.setWRDOFC(WRDOFC);
+                    
                     String MAIN_NM=(String)jsonObj.get("X_SWIFI_MAIN_NM");
-                    System.out.println("와이파이명 : "+MAIN_NM); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("와이파이명 : "+MAIN_NM);
+                    api.setMAIN_NM(MAIN_NM);
+                    
                     String ADRES1=(String)jsonObj.get("X_SWIFI_ADRES1");
-                    System.out.println("도로명주소 : "+ADRES1); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("도로명주소 : "+ADRES1);
+                    api.setADRES1(ADRES1);
+                    
                     String ADRES2=(String)jsonObj.get("X_SWIFI_ADRES2");
-                    System.out.println("상세주소 : "+ADRES2); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("상세주소 : "+ADRES2); 
+                    api.setADRES2(ADRES2);
+                    
                     String INSTL_FLOOR=(String)jsonObj.get("X_SWIFI_INSTL_FLOOR");
-                    System.out.println("설치위치(층) : "+INSTL_FLOOR); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("설치위치(층) : "+INSTL_FLOOR); 
+                    api.setINSTL_FLOOR(INSTL_FLOOR);
+                    
                     String INSTL_TY=(String)jsonObj.get("X_SWIFI_INSTL_TY");
-                    System.out.println("설치유형 : "+INSTL_TY); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("설치유형 : "+INSTL_TY); 
+                    api.setINSTL_TY(INSTL_TY);
+                    
                     String INSTL_MBY=(String)jsonObj.get("X_SWIFI_INSTL_MBY");
-                    System.out.println("설치기관 : "+INSTL_MBY); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("설치기관 : "+INSTL_MBY); 
+                    api.setINSTL_MBY(INSTL_MBY);
+                    
                     String SVC_SE=(String)jsonObj.get("X_SWIFI_SVC_SE");
-                    System.out.println("서비스구분 : "+SVC_SE); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("서비스구분 : "+SVC_SE);
+                    api.setSVC_SE(SVC_SE);
+                    
                     String CMCWR=(String)jsonObj.get("X_SWIFI_CMCWR");
-                    System.out.println("망종류 : "+CMCWR); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("망종류 : "+CMCWR); 
+                    api.setCMCWR(CMCWR);
+                    
                     String CNSTC_YEAR=(String)jsonObj.get("X_SWIFI_CNSTC_YEAR");
-                    System.out.println("설치년도 : "+CNSTC_YEAR); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("설치년도 : "+CNSTC_YEAR);
+                    api.setCNSTC_YEAR(CNSTC_YEAR);
+                    
                     String INOUT_DOOR=(String)jsonObj.get("X_SWIFI_INOUT_DOOR");
-                    System.out.println("실내외구분 : "+INOUT_DOOR); 
-                }
-            }
-
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("실내외구분 : "+INOUT_DOOR); 
+                    api.setINOUT_DOOR(INOUT_DOOR);
+                    
                     String REMARS3=(String)jsonObj.get("X_SWIFI_REMARS3");
-                    System.out.println("WIFI접속환경 : "+REMARS3); 
-                }
-            }
-            
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("WIFI접속환경 : "+REMARS3); 
+                    api.setREMARS3(REMARS3);
+                    
                     String LNT=(String)jsonObj.get("LNT");
-                    System.out.println("X좌표 : "+LNT); 
-                }
-            }
-            if (bodyResult.size() > 0){
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("X좌표 : "+LNT); 
+                    api.setLNT(LNT);
+                    
                     String LAT=(String)jsonObj.get("LAT");
-                    System.out.println("Y좌표 : "+LAT); 
-                }
-            }
-            if (bodyResult.size() > 0){  //작업일자
-                for(int i=0; i<bodyResult.size(); i++){
-                    JSONObject jsonObj = (JSONObject)bodyResult.get(i);
+//                    System.out.println("Y좌표 : "+LAT);
+                    api.setLAT(LAT);
+                    
                     String WORK_DTTM=(String)jsonObj.get("WORK_DTTM");
-                    System.out.println("작업일자 : "+WORK_DTTM); 
+//                    System.out.println("작업일자 : "+WORK_DTTM+"\n"); 
+                    api.setWORK_DTTM(WORK_DTTM);
+                    dtos.add(api);
+                    
+                    for(int v = 0;v<dtos.size();v++) {
+                    	System.out.println(dtos.get(v).getLAT());
+                    	System.out.println(dtos.get(v).getLNT());
+                    }
+                    
+                    
                     
                 }
                 
             }
-            
-            
-           
         } catch (ParseException e) {
         	System.out.println(e.getMessage());
         }
-        
-        
-
-
     }
-
-
-
 }

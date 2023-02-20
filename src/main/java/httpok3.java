@@ -1,4 +1,3 @@
-import java.io.IOException;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -11,7 +10,7 @@ public class httpok3 {
 		public boolean getUserInfo(String key) {
 			 
 		    try {
-		        String url = "http://127.0.0.1:8080/ZeroBase_Mission_01/get?key=" + key;
+		        String url = "http://openapi.seoul.go.kr:8088/434c545a586a6a613636494f775847/json/TbPublicWifiInfo/1/100/";
 		 
 		        OkHttpClient client = new OkHttpClient();
 		 

@@ -2,20 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
-
-<script>
-	function here(){
-		navigator.geolocation.getCurrentPosition(function(pos) {
-		    console.log(pos);
-		    var latitude = pos.coords.latitude;
-		    var longitude = pos.coords.longitude;
-		    document.getElementById("location_lat").value=latitude;
-		    document.getElementById("location_lnt").value=longitude;
-		    
-		});
-	}
-	
-</script>
 <head>
 
 	<meta charset="UTF-8">
@@ -31,8 +17,6 @@
 	    
 	  }
 	</style>
-	
-	
 </head>
 <body>
 
@@ -41,13 +25,12 @@
 		<a class="link-a" href="index.jsp">홈</a>|
 		<a class="link-a" href="history.jsp">위치 히스토리 목록</a>|
 		<a class="link-a" href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a>
-		
 	</div>
 	<br>
 	<form method="get" action="/load.jsp">
-        LAT : <input type="text" id="location_lat" name="lat" value=""/>,
-        LNT : <input type="text" id="location_lnt" name="lnt" value=""/>
-        <input type="button", value="내 위치 가져오기" onclick="here()"/>
+        LAT : <input type="text" id="location_lat" name="lat" value/>,
+        LNT : <input type="text" id="location_lnt" name="lnt" value/>
+        <input type="button", value="내 위치 가져오기" onclick="on()"/>
         <input type="submit", value="근처 Wi-Fi 정보 보기"/>
     </form>
     <table border="1">
@@ -70,9 +53,61 @@
     		<td>Y좌표</td>
     		<td>작업일자</td>
     	</tr>
-    	<tr height="100%">
-            <td colspan = "17" align="center">위치 정보를 입력한 후에 조회해 주세요.</td>
-        </tr>
+    	<tr>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		<td>
+    		
+    		</td>
+    		
+    	</tr>
+    	
     </table>
 	
 <p></p>
