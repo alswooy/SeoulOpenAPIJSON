@@ -33,7 +33,7 @@
     		<td>ID</td>
     		<td>X좌표</td>
     		<td>Y좌표</td>
-    		<td>조회일자</td>
+    		<td>조회일자</td>4
     		<td>비고</td>
     	</tr>
     	<tr>
