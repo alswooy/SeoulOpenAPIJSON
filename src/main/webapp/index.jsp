@@ -47,10 +47,13 @@
 	<form method="get" action="/load.jsp">
         LAT : <input type="text" id="location_lat" name="lat" value=""/>,
         LNT : <input type="text" id="location_lnt" name="lnt" value=""/>
+        <%
+        	
+        %>
         <input type="button", value="내 위치 가져오기" onclick="here()"/>
         <input type="submit", value="근처 Wi-Fi 정보 보기"/>
     </form>
-    <table border="1">
+    <table border="1"> 
     	<tr>
     		<td>거리(Km)</td>
     		<td>관리번호</td>

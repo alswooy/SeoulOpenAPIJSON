@@ -1,8 +1,9 @@
 
+
 import lombok.Data;
 
 @Data
-public class apidto {
+public class WifiDto implements Comparable<WifiDto> {
 	private String MGR_NO;  	//관리번호
 	private String WRDOFC;  	//자치구
 	private String MAIN_NM;		//와이파이명
@@ -16,9 +17,36 @@ public class apidto {
 	private String CNSTC_YEAR;  //설치년도
 	private String INOUT_DOOR;  //실내외구분
 	private String REMARS3;     //WIFI접속환경
-	private String LNT; 		//x좌표
-	private String LAT;			//y좌표
+	private Double LNT; 		//x좌표
+	private Double LAT;			//y좌표
 	private String WORK_DTTM; 	//작업일자
+	private int APICNT;      	//데이터개수   
+	private Double distance;  	//거리
+	
+	
+	@Override
+	public int compareTo(WifiDto o) {
+		if (this.distance > o.distance) {
+			return 1;
+		} else if (this.distance < o.distance) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
+	
+	public Double getDistance() {
+		return distance;
+	}
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+	public int getAPICNT() {
+		return APICNT;
+	}
+	public void setAPICNT(int aPICNT) {
+		APICNT = aPICNT;
+	}
 	public String getMGR_NO() {
 		return MGR_NO;
 	}
@@ -97,16 +125,17 @@ public class apidto {
 	public void setREMARS3(String rEMARS3) {
 		REMARS3 = rEMARS3;
 	}
-	public String getLNT() {
+	
+	public Double getLNT() {
 		return LNT;
 	}
-	public void setLNT(String lNT) {
+	public void setLNT(Double lNT) {
 		LNT = lNT;
 	}
-	public String getLAT() {
+	public Double getLAT() {
 		return LAT;
 	}
-	public void setLAT(String lAT) {
+	public void setLAT(Double lAT) {
 		LAT = lAT;
 	}
 	public String getWORK_DTTM() {
