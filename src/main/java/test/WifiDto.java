@@ -1,12 +1,8 @@
 package Api;
 
-
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class WifiDto implements Comparable<WifiDto> {
 	private String MGR_NO;  	//관리번호
 	private String WRDOFC;  	//자치구

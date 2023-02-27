@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="Api.HistoryDto"%>
+<%@page import="Api.WifiDto"%>
+<%@page import="Api.ApiDB"%>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
-<html lang="kr">
+<html>
 
 <script>
 	function here(){
@@ -9,8 +14,9 @@
 		    console.log(pos);
 		    var latitude = pos.coords.latitude;
 		    var longitude = pos.coords.longitude;
-		    document.getElementById("location_lat").value=latitude;
-		    document.getElementById("location_lnt").value=longitude;
+		    latitude= latitude
+		    document.getElementById("lat").value=latitude;
+		    document.getElementById("lnt").value=longitude;
 		    
 		});
 	}
@@ -35,23 +41,28 @@
 	
 </head>
 <body>
-
+	
 	<h1>와이파이 정보 구하기</h1>
 	<div class="link-all">
 		<a class="link-a" href="index.jsp">홈</a>|
 		<a class="link-a" href="history.jsp">위치 히스토리 목록</a>|
-		<a class="link-a" href="load-wifi.jsp">Open API 와이파이 정보 가져오기</a>
+		<a class="link-a" href="wifi_load.jsp">Open API 와이파이 정보 가져오기</a>
 		
 	</div>
 	<br>
-	<form method="get" action="/load.jsp">
-        LAT : <input type="text" id="location_lat" name="lat" value=""/>,
-        LNT : <input type="text" id="location_lnt" name="lnt" value=""/>
-        <%
-        	
-        %>
-        <input type="button", value="내 위치 가져오기" onclick="here()"/>
-        <input type="submit", value="근처 Wi-Fi 정보 보기"/>
+	
+	<%
+	String lat = request.getParameter("lat");
+	System.out.println(lat);
+	String lnt = request.getParameter("lnt"); 
+	System.out.println(lnt);
+	%>
+	<form method="get" action="/ZeroBase_Mission_01/history_save.jsp">
+        LAT : <input type="text" id="lat" name="lat" value="<%=lat != null ? lat : "0.0"%>">,
+        LNT : <input type="text" id="lnt" name="lnt" value="<%=lnt != null ? lnt : "0.0"%>">
+        
+        <input type="button"  value="내 위치 가져오기" onclick="here()"/>
+        <input type="submit" value="근처 Wi-Fi 정보 보기"/>
     </form>
     <table border="1"> 
     	<tr>
@@ -73,9 +84,81 @@
     		<td>Y좌표</td>
     		<td>작업일자</td>
     	</tr>
-    	<tr height="100%">
+    	<%
+    	 if (lat != null && lnt != null) {
+   	    		List<WifiDto> list = ApiDB.getApiList();
+   	    		
+   	    		for(WifiDto dto : list){
+   	    			
+    	    			
+    	%>
+    	<tr>	
+    		<td>
+    			<%=String.format("%.4f",dto.getDistance()) %>
+    		</td>
+    		<td>
+    			<%=dto.getMGR_NO() %>
+    		</td>
+    		<td>
+    			<%=dto.getWRDOFC() %>
+    		</td>
+    		<td>
+    			<%=dto.getMAIN_NM() %>
+    		</td>
+    		<td>
+    			<%=dto.getADRES1() %>
+    		</td>
+    		<td>
+    			<%=dto.getADRES2() %>
+    		</td>
+    		<td>
+    			<%=dto.getINSTL_FLOOR() %>
+    		</td>
+    		<td>
+    			<%=dto.getINSTL_TY() %>
+    		</td>
+    		<td>
+    			<%=dto.getINSTL_MBY() %>
+    		</td>
+    		<td>
+    			<%=dto.getSVC_SE() %>
+    		</td>
+    		<td>
+    			<%=dto.getCMCWR() %>
+    		</td>
+    		<td>
+    			<%=dto.getCNSTC_YEAR() %>
+    		</td>
+    		<td>
+    			<%=dto.getINOUT_DOOR() %>
+    		</td>
+    		<td>
+    			<%=dto.getREMARS3() %>
+    		</td>
+    		<td>
+    			<%=dto.getLNT() %>
+    		</td>
+    		<td>
+    			<%=dto.getLAT() %>
+    		</td>
+    		<td>
+    			<%=dto.getWORK_DTTM() %>
+    		</td>
+    		
+    	
+    	
+    	</tr>
+    	<%
+    		}
+    	 }else{ %>
+    		<tr height="100%">
+        	
+        	
             <td colspan = "17" align="center">위치 정보를 입력한 후에 조회해 주세요.</td>
         </tr>
+    	<%	
+    	}
+	%>
     </table>
 	
 <p></p>
