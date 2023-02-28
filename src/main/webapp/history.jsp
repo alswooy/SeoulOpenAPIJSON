@@ -42,20 +42,23 @@
     	
     	<tr>
     		<%	
+    		/* int id = Integer.parseInt(request.getParameter("id")); */
    			List<HistoryDto> historyList = ApiDB.getHistoryList();
 			for (HistoryDto list : historyList) {
 				
 			%>
+			
 	        <td><%=list.getId() %></td>
 	        <td><%=list.getLat() %></td>
 	        <td><%=list.getLnt() %></td>
 	        <td><%=list.getDate() %></td>
 	        <td>
-            <form action="delete.jsp">
-                <input type="submit" value="삭제">
-                <input type="hidden" name="idx" value="">
+	        <form method="get"  action="/ZeroBase_Mission_01/delete.jsp">
+                <input type="submit"    value="삭제">
+                <input type="hidden" name="id"  value=<%=list.getId() %>>
             </form>
         	</td>
+        	
     	</tr>
     	<%} %>
     </table>

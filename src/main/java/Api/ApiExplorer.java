@@ -51,7 +51,7 @@ public class ApiExplorer {
 			rd.close();
 			conn.disconnect();
 				
-		JsonParser parser = new JsonParser();
+			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(sb.toString());
 			JsonObject tbPublicWifiInfo = element.getAsJsonObject().get("TbPublicWifiInfo").getAsJsonObject();
 			JsonArray rows = tbPublicWifiInfo.get("row").getAsJsonArray();

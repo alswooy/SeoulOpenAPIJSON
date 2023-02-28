@@ -10,14 +10,18 @@
 <title>delete</title>
 </head>
 <body>
-	<%int id = Integer.parseInt(request.getParameter("id"));
-	HistoryDto dto = new HistoryDto();
-	dto.setId(id);
-	ApiDB.HistoryDelete(dto);
+	<%
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+		HistoryDto dto = new HistoryDto();
+		System.out.println(id + " --" + dto);
+		dto.setId(id); 
+		
+		ApiDB.HistoryDelete(dto); 
 	%>
 
 <script> 
-		location.href="http://localhost:8080/ZeroBase_Mission_01/history"
+		location.href="http://localhost:8080/ZeroBase_Mission_01/history.jsp"
 </script> 
 </body>
 </html>
