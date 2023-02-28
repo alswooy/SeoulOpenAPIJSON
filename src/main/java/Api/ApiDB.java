@@ -86,8 +86,8 @@ public class ApiDB {
 				String WORK_DTTM = rs.getString("WORK_DTTM");
 				Double LNT2 = rs.getDouble("LNT2");
 				Double LAT2 = rs.getDouble("LAT2");
-				Double distance = Calculation.getDistance(LAT, LNT, LNT2, LAT2);
-				System.out.println(LAT + " --  "+LNT+ " --  "+LNT2+" --  "+ LAT2);
+				Double distance = Calculation.getDistance(LNT, LAT, LAT2, LNT2);
+				System.out.println(LNT + " --  "+LAT+ " --  "+LAT2+" --  "+ LNT2);
 				WifiDto dto = new WifiDto();
 				
 				dto.setMGR_NO(MGR_NO);

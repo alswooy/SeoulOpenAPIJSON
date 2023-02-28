@@ -14,13 +14,13 @@ import com.google.gson.JsonObject;
 
 public class ApiExplorer {
 
-	public static final int COUNT= 1000;
+	public static final int COUNT = 1000;
 	public static final String URL = "http://openapi.seoul.go.kr:8088/sample/json/TbPublicWifiInfo/1/1";
 	
 	public static void loadWifi() throws IOException{
 		
 		int listTotalCount = getListTotalCount();
-		int loopCount = listTotalCount / COUNT + 1;		
+		int loopCount = listTotalCount / COUNT+ 1;		
 		
 		for (int i = 0, j = 1; i < loopCount; i++, j += COUNT) {
 			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); 
@@ -28,7 +28,7 @@ public class ApiExplorer {
 			urlBuilder.append("/" + URLEncoder.encode("json","UTF-8"));
 			urlBuilder.append("/" + URLEncoder.encode("TbPublicWifiInfo","UTF-8")); 
 			urlBuilder.append("/" + URLEncoder.encode(String.valueOf(j), "UTF-8")); 
-			urlBuilder.append("/" + URLEncoder.encode(String.valueOf(j + COUNT - 1),"UTF-8")); 
+			urlBuilder.append("/" + URLEncoder.encode(String.valueOf(j + COUNT- 1),"UTF-8")); 
 			
 			URL url = new URL(urlBuilder.toString());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -1,0 +1,10 @@
+diff a/src/main/java/Api/ApiDB.java b/src/main/java/Api/ApiDB.java	(rejected hunks)
+@@ -86,7 +86,7 @@
+ 				String WORK_DTTM = rs.getString("WORK_DTTM");
+ 				Double LNT2 = rs.getDouble("LNT2");
+ 				Double LAT2 = rs.getDouble("LAT2");
+-				Double distance = Calculation.getDistance(LNT, LAT, LAT2, LNT2);
++				Double distance = Calculation.getDistance(LAT, LNT, LNT2, LAT2);
+ 				System.out.println(LAT + " --  "+LNT+ " --  "+LNT2+" --  "+ LAT2);
+ 				WifiDto dto = new WifiDto();
+ 				
